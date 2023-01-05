@@ -1,9 +1,37 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import Image from "next/image";
+import { Inter } from "@next/font/google";
+import styles from "../styles/Home.module.css";
+import { Button, useTheme, Text, Avatar, Grid } from "@nextui-org/react";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
+
+const MyComponent = () => {
+  const { theme } = useTheme();
+
+  return (
+    <div>
+      <Text
+        css={{
+          color: "$blue800",
+          fontSize: "$sm",
+          padding: "$2 $4",
+        }}
+      >
+        Using tokens
+      </Text>
+      <p
+        style={{
+          color: theme.colors.primary.value,
+          fontSize: theme.fontSizes.sm.value,
+          padding: `${theme.space[2].value} ${theme.space[4].value}`,
+        }}
+      >
+        Using color theme value
+      </p>
+    </div>
+  );
+};
 
 export default function Home() {
   return (
@@ -15,6 +43,67 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
+        <Button>Click me</Button>
+        <MyComponent />
+        <Text css={{ background: "$myColor" }}>NextUI colors</Text>
+        <Grid.Container gap={2}>
+          <Grid>
+            <Avatar
+              squared
+              src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
+            />
+          </Grid>
+          <Grid>
+            <Avatar squared text="Junior" />
+          </Grid>
+          <Grid>
+            <Avatar
+              squared
+              src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+            />
+          </Grid>
+          <Grid>
+            <Avatar squared text="Jane" />
+          </Grid>
+          <Grid>
+            <Avatar
+              squared
+              src="https://i.pravatar.cc/150?u=a04258114e29026702d"
+            />
+          </Grid>
+          <Grid>
+            <Avatar squared text="Joe" />
+          </Grid>
+        </Grid.Container>
+        <Grid.Container gap={2}>
+          <Grid>
+            <Avatar text="JR" size="xs" />
+          </Grid>
+          <Grid>
+            <Avatar
+              src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
+              size="sm"
+            />
+          </Grid>
+          <Grid>
+            <Avatar text="Joe" size="md" />
+          </Grid>
+          <Grid>
+            <Avatar
+              src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+              size="lg"
+            />
+          </Grid>
+          <Grid>
+            <Avatar text="John" size="xl" />
+          </Grid>
+          <Grid>
+            <Avatar
+              src="https://i.pravatar.cc/150?u=a04258114e29026702d"
+              css={{ size: "$20" }}
+            />
+          </Grid>
+        </Grid.Container>
         <div className={styles.description}>
           <p>
             Get started by editing&nbsp;
@@ -26,7 +115,7 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              By{' '}
+              By{" "}
               <Image
                 src="/vercel.svg"
                 alt="Vercel Logo"
@@ -38,7 +127,6 @@ export default function Home() {
             </a>
           </div>
         </div>
-
         <div className={styles.center}>
           <Image
             className={styles.logo}
@@ -58,7 +146,6 @@ export default function Home() {
             />
           </div>
         </div>
-
         <div className={styles.grid}>
           <a
             href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
@@ -119,5 +206,5 @@ export default function Home() {
         </div>
       </main>
     </>
-  )
+  );
 }
